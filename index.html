@@ -461,79 +461,63 @@
                 'bol.com.br', 'ig.com.br'
             ];
             
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Reset errors
-                document.getElementById('nomeError').classList.add('hidden');
-                document.getElementById('emailError').classList.add('hidden');
-                document.getElementById('telefoneError').classList.add('hidden');
-                
-                // Get values
-                const nome = document.getElementById('nome').value.trim();
-                const email = document.getElementById('email').value.trim();
-                const telefone = document.getElementById('telefone').value.trim();
-                
-                let isValid = true;
-                
-                // Validate name
-                if (nome === '') {
-                    document.getElementById('nomeError').classList.remove('hidden');
-                    isValid = false;
-                }
-                
-                // Validate email
-                if (email === '') {
-                    document.getElementById('emailError').textContent = 'Por favor, insira um e-mail';
-                    document.getElementById('emailError').classList.remove('hidden');
-                    isValid = false;
-                } else if (!isValidEmail(email)) {
-                    document.getElementById('emailError').textContent = 'Por favor, insira um e-mail válido';
-                    document.getElementById('emailError').classList.remove('hidden');
-                    isValid = false;
-                } else if (!isValidEmailDomain(email)) {
-                    document.getElementById('emailError').textContent = 'Por favor, insira um e-mail com domínio válido';
-                    document.getElementById('emailError').classList.remove('hidden');
-                    isValid = false;
-                }
-                
-                // Validate phone
-                if (telefone === '' || !isValidPhone(telefone)) {
-                    document.getElementById('telefoneError').textContent = 'Por favor, insira um telefone válido no formato (00) 00000-0000';
-                    document.getElementById('telefoneError').classList.remove('hidden');
-                    isValid = false;
-                }
-                
-                if (isValid) {
-                    // Get current date
-                    const now = new Date();
-                    const data_captura = `${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()} ${now.getHours()}:${now.getMinutes()}`;
-                    
-                    // Create lead data
-                    const leadData = {
-                        nome: nome,
-                        email: email,
-                        telefone: telefone,
-                        data_captura: data_captura
-                    };
-                    
-                    // Save lead to localStorage
-                    saveLeadToStorage(leadData);
-                    
-                    // Show success message
-                    form.reset();
-                    form.classList.add('hidden');
-                    successMessage.classList.remove('hidden');
-                    
-                    // Scroll to success message
-                    successMessage.scrollIntoView({ behavior: 'smooth' });
-                    
-                    // Redirect after 3 seconds
-                    setTimeout(() => {
-                        window.location.href = EBOOK_URL;
-                    }, 3000);
-                }
-            });
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const nome = document.getElementById('nome').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const telefone = document.getElementById('telefone').value.trim();
+
+        let isValid = true;
+        if (!nome) { document.getElementById('nomeError').classList.remove('hidden'); isValid = false; }
+        else { document.getElementById('nomeError').classList.add('hidden'); }
+
+        if (!email || !email.includes('@')) {
+          document.getElementById('emailError').classList.remove('hidden'); isValid = false;
+        } else {
+          document.getElementById('emailError').classList.add('hidden');
+        }
+
+        if (!telefone || telefone.length < 10) {
+          document.getElementById('telefoneError').classList.remove('hidden'); isValid = false;
+        } else {
+          document.getElementById('telefoneError').classList.add('hidden');
+        }
+
+        if (isValid) {
+          const now = new Date();
+          const data_captura = now.toLocaleString();
+
+          const leadData = { nome, email, telefone, data_captura };
+          saveLeadToStorage(leadData);
+
+          const payload = new FormData();
+          payload.append('nome', nome);
+          payload.append('email', email);
+          payload.append('telefone', telefone);
+          payload.append('data_captura', data_captura);
+
+          fetch(form.action, {
+            method: form.method,
+            body: payload,
+            headers: { 'Accept': 'application/json' }
+          }).then(res => {
+            if (!res.ok) throw new Error('Erro ao enviar');
+            return res.json();
+          }).then(() => {
+            form.reset();
+            form.classList.add('hidden');
+            successMessage.classList.remove('hidden');
+            successMessage.scrollIntoView({ behavior: 'smooth' });
+            setTimeout(() => {
+              window.location.href = EBOOK_URL;
+            }, 3000);
+          }).catch(err => {
+            alert('Erro ao enviar o formulário.');
+            console.error(err);
+          });
+        }
+      });
             
             function isValidEmail(email) {
                 const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -550,11 +534,10 @@
                 return re.test(phone);
             }
             
-            function saveLeadToStorage(leadData) {
-                // Save to localStorage for backup
-                const leads = JSON.parse(localStorage.getItem('leads') || '[]');
-                leads.push(leadData);
-                localStorage.setItem('leads', JSON.stringify(leads));
+      function saveLeadToStorage(data) {
+        const leads = JSON.parse(localStorage.getItem('leads') || '[]');
+        leads.push(data);
+        localStorage.setItem('leads', JSON.stringify(leads));
             }
             
             // Phone mask
