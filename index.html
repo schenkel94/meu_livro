@@ -448,19 +448,11 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('leadForm');
-            const successMessage = document.getElementById('successMessage');
-            const EBOOK_URL = "https://drive.google.com/file/d/1u6oDUrtGAVZzh96GEqBmXn79g8BKp7JA/view";
-            
-            // Valid email domains
-            const validDomains = [
-                'gmail.com', 'outlook.com', 'hotmail.com', 'live.com', 'yahoo.com', 
-                'icloud.com', 'me.com', 'mac.com', 'aol.com', 'zoho.com', 
-                'protonmail.com', 'uol.com.br', 'terra.com.br', 'globo.com', 
-                'bol.com.br', 'ig.com.br'
-            ];
-            
+      document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('leadForm');
+      const successMessage = document.getElementById('successMessage');
+      const EBOOK_URL = "https://drive.google.com/file/d/1u6oDUrtGAVZzh96GEqBmXn79g8BKp7JA/view";
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
 
@@ -518,48 +510,13 @@
           });
         }
       });
-            
-            function isValidEmail(email) {
-                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                return re.test(email);
-            }
-            
-            function isValidEmailDomain(email) {
-                const domain = email.split('@')[1];
-                return validDomains.includes(domain);
-            }
-            
-            function isValidPhone(phone) {
-                const re = /^\(\d{2}\) \d{5}-\d{4}$/;
-                return re.test(phone);
-            }
-            
+
       function saveLeadToStorage(data) {
         const leads = JSON.parse(localStorage.getItem('leads') || '[]');
         leads.push(data);
         localStorage.setItem('leads', JSON.stringify(leads));
-            }
-            
-            // Phone mask
-            const phoneInput = document.getElementById('telefone');
-            phoneInput.addEventListener('input', function(e) {
-                let value = e.target.value.replace(/\D/g, '');
-                
-                if (value.length > 11) {
-                    value = value.substring(0, 11);
-                }
-                
-                // Apply mask (00) 00000-0000
-                if (value.length > 0) {
-                    value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
-                    if (value.length > 10) {
-                        value = value.replace(/(\d{5})(\d)/, '$1-$2');
-                    }
-                }
-                
-                e.target.value = value;
-            });
-        });
-    </script>
-<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=schenkel94/libertesedasapostas" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
+      }
+    });
+  </script>
+</body>
 </html>
