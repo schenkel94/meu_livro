@@ -512,6 +512,26 @@
                     submitButton.disabled = true;
                     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Enviando...';
 
+
+
+                    // TESTE MANUAL - Adicione no seu JavaScript antes do fetch()
+console.log('=== TESTE INICIADO ===');
+const testData = {
+  nome: 'TESTE NOME',
+  email: 'teste@email.com',
+  telefone: '(11) 99999-9999'
+};
+
+fetch(scriptURL, {
+  method: 'POST',
+  body: JSON.stringify(testData),
+  headers: { 'Content-Type': 'application/json' }
+})
+.then(res => res.json())
+.then(data => console.log('Resposta:', data))
+.catch(err => console.error('Erro no teste:', err));
+
+
                     // Enviar dados para o Google Sheets
                     const response = await fetch(scriptURL, {
                         method: 'POST',
