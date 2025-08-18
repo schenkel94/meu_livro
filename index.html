@@ -6,6 +6,7 @@
     <title>Livre das Apostas: Uma História de Redenção</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
         
@@ -79,10 +80,25 @@
         .feature-card {
             transition: all 0.3s ease;
         }
+
+        /* Swiper Customizations */
+        .swiper-pagination-bullet {
+            background-color: #334155;
+            opacity: 1;
+        }
+        .swiper-pagination-bullet-active {
+            background-color: #7c3aed;
+        }
+        .swiper-slide {
+            height: auto;
+            display: flex;
+        }
+        .swiper-wrapper {
+            align-items: stretch;
+        }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header class="hero-gradient py-6 px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center">
@@ -95,7 +111,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero-gradient py-16 px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             <div class="text-center md:text-left">
@@ -121,7 +136,6 @@
         </div>
     </section>
 
-    <!-- Features Section -->
     <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12">
@@ -129,7 +143,6 @@
             </h2>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Capítulo 1 -->
                 <div class="bg-gray-800 p-6 rounded-xl feature-card">
                     <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mb-4">
                         <i class="fas fa-spider text-white text-xl"></i>
@@ -140,7 +153,6 @@
                     </p>
                 </div>
                 
-                <!-- Capítulo 2 -->
                 <div class="bg-gray-800 p-6 rounded-xl feature-card">
                     <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mb-4">
                         <i class="fas fa-brain text-white text-xl"></i>
@@ -151,7 +163,6 @@
                     </p>
                 </div>
                 
-                <!-- Capítulo 3 -->
                 <div class="bg-gray-800 p-6 rounded-xl feature-card">
                     <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mb-4">
                         <i class="fas fa-exclamation-triangle text-white text-xl"></i>
@@ -162,7 +173,6 @@
                     </p>
                 </div>
                 
-                <!-- Capítulo 4 -->
                 <div class="bg-gray-800 p-6 rounded-xl feature-card">
                     <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mb-4">
                         <i class="fas fa-cross text-white text-xl"></i>
@@ -173,7 +183,6 @@
                     </p>
                 </div>
                 
-                <!-- Capítulo 5 -->
                 <div class="bg-gray-800 p-6 rounded-xl feature-card">
                     <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mb-4">
                         <i class="fas fa-tools text-white text-xl"></i>
@@ -184,7 +193,6 @@
                     </p>
                 </div>
                 
-                <!-- Capítulo 6 -->
                 <div class="bg-gray-800 p-6 rounded-xl feature-card">
                     <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mb-4">
                         <i class="fas fa-pray text-white text-xl"></i>
@@ -195,7 +203,6 @@
                     </p>
                 </div>
                 
-                <!-- Capítulo 7 -->
                 <div class="bg-gray-800 p-6 rounded-xl feature-card">
                     <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mb-4">
                         <i class="fas fa-home text-white text-xl"></i>
@@ -206,7 +213,6 @@
                     </p>
                 </div>
                 
-                <!-- Capítulo 8 -->
                 <div class="bg-gray-800 p-6 rounded-xl feature-card">
                     <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mb-4">
                         <i class="fas fa-shield-alt text-white text-xl"></i>
@@ -220,7 +226,6 @@
         </div>
     </section>
 
-    <!-- Chapter Excerpts -->
     <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-800">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12">
@@ -228,7 +233,6 @@
             </h2>
             
             <div class="space-y-8">
-                <!-- Excerpt 1 -->
                 <div class="chapter-excerpt p-6 rounded-lg">
                     <p class="italic text-gray-300 mb-4">
                         "A primeira vitória é como isca envenenada - você saboreia o gosto doce do lucro fácil, sem perceber que está mordendo o anzol de uma dependência que pode durar anos."
@@ -236,7 +240,6 @@
                     <p class="text-purple-400 font-semibold">— Capítulo 1: A Armadilha Dourada</p>
                 </div>
                 
-                <!-- Excerpt 2 -->
                 <div class="chapter-excerpt p-6 rounded-lg">
                     <p class="italic text-gray-300 mb-4">
                         "Neguei meu vício até para mim mesmo, até o dia em que olhei nos olhos da minha esposa e vi o reflexo de quem eu havia me tornado: um estranho que mentia, escondia e destruía tudo que amava."
@@ -244,7 +247,6 @@
                     <p class="text-purple-400 font-semibold">— Capítulo 3: Reconhecendo o Problema</p>
                 </div>
                 
-                <!-- Excerpt 3 -->
                 <div class="chapter-excerpt p-6 rounded-lg">
                     <p class="italic text-gray-300 mb-4">
                         "A dopamina não é só sobre prazer - é sobre desejo. Ela nos mantém correndo atrás de uma recompensa que nunca virá, como um burro perseguindo uma cenoura presa a uma vara."
@@ -261,7 +263,55 @@
         </div>
     </section>
 
-    <!-- Author Testimonial -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12">
+                O que nossos <span class="text-purple-400">leitores</span> estão dizendo
+            </h2>
+            
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide p-6 rounded-xl testimonial-card">
+                        <div class="flex items-center text-yellow-400 mb-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 italic mb-4">"Este livro mudou minha vida! Achei que não havia mais esperança, mas o autor me mostrou um novo caminho. A abordagem espiritual e prática é exatamente o que eu precisava."</p>
+                        <p class="font-semibold text-white">— Lucas F., Rio de Janeiro</p>
+                    </div>
+                    
+                    <div class="swiper-slide p-6 rounded-xl testimonial-card">
+                        <div class="flex items-center text-yellow-400 mb-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="text-gray-300 italic mb-4">"Leitura obrigatória para quem luta contra o vício das apostas. As estratégias são simples, mas incrivelmente eficazes. Me ajudou a reconstruir meu relacionamento com minha família."</p>
+                        <p class="font-semibold text-white">— Camila D., Belo Horizonte</p>
+                    </div>
+
+                    <div class="swiper-slide p-6 rounded-xl testimonial-card">
+                        <div class="flex items-center text-yellow-400 mb-4">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 italic mb-4">"Eu estava cético, mas o capítulo sobre a dopamina abriu meus olhos. O autor entende a mente de um jogador e oferece o verdadeiro antídoto: a fé e o propósito."</p>
+                        <p class="font-semibold text-white">— Rafael G., São Paulo</p>
+                    </div>
+                </div>
+                <div class="swiper-pagination mt-8"></div>
+            </div>
+        </div>
+    </section>
+
     <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900">
         <div class="max-w-4xl mx-auto">
             <div class="testimonial-card p-8 rounded-2xl">
@@ -279,7 +329,6 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
     <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-800">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-3xl sm:text-4xl font-bold text-center mb-4">
@@ -290,7 +339,6 @@
             </p>
             
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- Free Chapter -->
                 <div class="bg-gray-700 p-8 rounded-xl border border-gray-600">
                     <h3 class="text-2xl font-bold mb-4">Primeiro Capítulo</h3>
                     <p class="text-4xl font-bold mb-4">Grátis</p>
@@ -313,7 +361,6 @@
                     </a>
                 </div>
                 
-                <!-- Complete eBook -->
                 <div class="bg-purple-900 p-8 rounded-xl border border-purple-700 relative">
                     <div class="absolute top-0 right-0 bg-yellow-400 text-gray-900 font-bold px-4 py-1 rounded-bl-lg rounded-tr-lg">
                         OFERTA
@@ -349,7 +396,6 @@
         </div>
     </section>
 
-    <!-- Lead Form -->
     <section id="formulario" class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900">
         <div class="max-w-2xl mx-auto">
             <div class="bg-gray-800 p-8 rounded-xl">
@@ -395,7 +441,6 @@
         </div>
     </section>
 
-    <!-- Final CTA -->
     <section class="py-16 px-4 sm:px-6 lg:px-8 hero-gradient">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-3xl sm:text-4xl font-bold mb-6">
@@ -415,7 +460,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="py-8 px-4 sm:px-6 lg:px-8 bg-gray-900">
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-center">
@@ -424,16 +468,10 @@
                     <span class="text-lg font-bold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">Livre das Apostas</span>
                 </div>
                 <div class="flex space-x-6">
-<!--                    <a href="https://www.instagram.com/livre_das_apostas" class="text-gray-400 hover:text-white transition">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
--->                    <a href="https://www.instagram.com/livre_das_apostas" class="text-gray-400 hover:text-white transition">
+                    <a href="https://www.instagram.com/livre_das_apostas" class="text-gray-400 hover:text-white transition">
                         <i class="fab fa-instagram"></i>
                     </a>
-<!--                    <a href="https://www.instagram.com/livre_das_apostas" class="text-gray-400 hover:text-white transition">
-                        <i class="fab fa-youtube"></i>
-                    </a>
--->                </div>
+                </div>
             </div>
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
                 <p class="mt-2">Este produto não oferece garantia de resultados. O conteúdo é baseado na experiência pessoal do autor.</p>
@@ -441,6 +479,7 @@
         </div>
     </footer>
 
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const form = document.getElementById('leadForm');
@@ -449,6 +488,7 @@
             
             // URL do seu Google Apps Script
             const scriptURL = 'https://script.google.com/macros/s/AKfycbw1jkrUii-TELe1qjYLTmz83n-WZVlI4eQDj9k1HTVi1KZNq2ByOeSs1NNO6yqTQQG5Lw/exec';            
+            
             // Máscara para telefone
             const telefoneInput = document.getElementById('telefone');
             telefoneInput.addEventListener('input', function(e) {
@@ -511,7 +551,6 @@
                     submitButton.disabled = true;
                     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Enviando...';
 
-
                     // Enviar dados para o Google Sheets
                     const response = await fetch(scriptURL, {
                         method: 'POST',
@@ -545,6 +584,27 @@
                     if (submitButton) {
                         submitButton.disabled = false;
                         submitButton.innerHTML = 'Enviar e Receber Capítulo Grátis';
+                    }
+                }
+            });
+
+            // Initialize Swiper
+            var swiper = new Swiper(".mySwiper", {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                loop: true,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
                     }
                 }
             });
